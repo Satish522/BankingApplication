@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter @ToString @NoArgsConstructor @AllArgsConstructor
+@Table(name = "customers")
 public class Customer extends BaseEntity {
 
     @Id
