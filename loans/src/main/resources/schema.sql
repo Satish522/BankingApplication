@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS public.loans
     outstanding_amount integer NOT NULL,
     created_at date NOT NULL,
     created_by varchar(20) NOT NULL,
-    update_at date NOT NULL,
-    update_by varchar(20) NOT NULL,
+    update_at date ,
+    update_by varchar(20) ,
     CONSTRAINT loans_pkey PRIMARY KEY (loan_id)
 )
 

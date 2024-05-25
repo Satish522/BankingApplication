@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS public.accounts
     branch_address varchar(20) NOT NULL,
     created_at date NOT NULL,
     created_by varchar(20) NOT NULL,
-    updated_at date NOT NULL,
-    updated_by varchar(20) NOT NULL,
+    updated_at date ,
+    updated_by varchar(20) ,
     CONSTRAINT accounts_pkey PRIMARY KEY (account_number)
 )
 
@@ -24,8 +24,8 @@ email varchar(100) NOT NULL,
 mobile_number varchar(20) NOT NULL,
 created_at date NOT NULL,
 created_by varchar(20) NOT NULL,
-updated_at date NOT NULL,
-updated_by varchar(20) NOT NULL,
+updated_at date ,
+updated_by varchar(20) ,
 CONSTRAINT customer_pkey PRIMARY KEY (customer_id)
 )
 
