@@ -1,7 +1,30 @@
 services:
+  postgres-accounts:
+    container_name: postgres-accounts
+    image: postgres
+    environment:
+      POSTGRES_DB: accounts
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    healthcheck:
+      test: ["CMD", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+    volumes:
+      - ./postgres-accounts:/data/postgres
+    ports:
+      - "5436:5432"
+    networks:
+      - satish
+
   accounts:
     image: "satish2121/accounts:banking"
     container_name: accounts-ms
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
     ports:
       - "8080:8080"
     deploy:
@@ -10,9 +33,13 @@ services:
           memory: 700m
     networks:
       - satish
+    depends_on:
+      - postgres-accounts
   loans:
     image: "satish2121/loans:banking"
     container_name: loans-ms
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
     ports:
       - "8090:8090"
     deploy:
@@ -21,9 +48,13 @@ services:
           memory: 700m
     networks:
       - satish
+    depends_on:
+      - postgres-accounts
   cards:
     image: "satish2121/cards:banking"
     container_name: cards-ms
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
     ports:
       - "9000:9000"
     deploy:
@@ -32,6 +63,8 @@ services:
           memory: 700m
     networks:
       - satish
+    depends_on:
+      - postgres-accounts
 networks:
   satish:
     driver: "bridge"
