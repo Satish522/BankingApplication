@@ -1,0 +1,11 @@
+
+build:
+  version: "2.0"
+accounts:
+  message: "Welcome to Banking accounts application for QA"
+  contactDetails:
+    name: "Sunita Reddy(QA Lead)"
+    email: "sunitareddy@gmail.com"
+  callSupport:
+    - (+91)7000982121
+    - (+91)7008370007

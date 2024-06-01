@@ -1,0 +1,10 @@
+build:
+  version: "1.0"
+accounts:
+  message: "Welcome to Banking accounts application for Prod"
+  contactDetails:
+    name: "Vignesh Shankar(Operation Lead)"
+    email: "vigneshshankar@gmail.com"
+  callSupport:
+    - (+91)7873000000
+    - (+91)7008090917

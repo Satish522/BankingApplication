@@ -14,3 +14,14 @@ spring:
   sql:
     init:
       mode: always
+
+build:
+  version: "3.0"
+accounts:
+  message: "Welcome to Banking Cards application"
+  contactDetails:
+    name: "Satish Subudhi"
+    email: "satishsubudhi522@gmail.com"
+  callSupport:
+    - (+91)7873482121
+    - (+91)7008378517
