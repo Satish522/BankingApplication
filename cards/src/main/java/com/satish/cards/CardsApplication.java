@@ -1,5 +1,6 @@
 package com.satish.cards;
 
+import com.satish.cards.dto.ContactDetailRecord;
 import org.springframework.boot.SpringApplication;
 
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
@@ -9,9 +10,11 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing(auditorAwareRef = "auditAwareImpl")
+@EnableConfigurationProperties(value = {ContactDetailRecord.class})
 @OpenAPIDefinition(
 		info = @Info(
 				title = "Cards microservice REST API Documentation",
