@@ -16,7 +16,7 @@ encrypt:
 ![image](https://github.com/Satish522/BankingApplication/assets/9487171/46c48d00-2a48-48c7-825c-b38d222a0cf8)
 
 
-![RabbitMQ (Docker Image)](https://www.rabbitmq.com/docs/download)
+![RabbitMQ (Docker Image)] [https://www.rabbitmq.com/docs/download](https://www.rabbitmq.com/docs/download)
 ====================================
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
 
