@@ -1,23 +1,6 @@
-server:
-  port: 9000
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5435/accounts
-    driverClassName: org.postgresql.Driver
-    username: postgres
-    password: postgres
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  sql:
-    init:
-      mode: always
-
 build:
   version: "3.0"
-accounts:
+cards:
   message: "Welcome to Banking Cards application"
   contactDetails:
     name: "Satish Subudhi"

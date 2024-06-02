@@ -1,6 +1,8 @@
 server:
   port: 9000
 spring:
+  application:
+    name: "cards"
   datasource:
     url: jdbc:postgresql://localhost:5435/accounts
     driverClassName: org.postgresql.Driver
@@ -14,14 +16,7 @@ spring:
   sql:
     init:
       mode: always
-
-build:
-  version: "3.0"
-accounts:
-  message: "Welcome to Banking Cards application"
-  contactDetails:
-    name: "Satish Subudhi"
-    email: "satishsubudhi522@gmail.com"
-  callSupport:
-    - (+91)7873482121
-    - (+91)7008378517
+  profiles:
+    active: "qa"
+  config:
+    import: "configserver:http://localhost:8071/"

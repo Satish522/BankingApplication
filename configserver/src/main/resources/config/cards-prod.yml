@@ -1,6 +1,6 @@
 build:
   version: "1.0"
-accounts:
+cards:
   message: "Welcome to Banking Cards application for Prod"
   contactDetails:
     name: "Vignesh Shankar(Operation Lead)"

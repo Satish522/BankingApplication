@@ -14,6 +14,6 @@ import java.util.Map;
  * @author satishkumarsubudhi
  * @since 26/05/24
  */
-@ConfigurationProperties("accounts")
+@ConfigurationProperties("cards")
 public record ContactDetailRecord(String message, Map<String, String> contactDetails, List<String> callSupport) {
 }

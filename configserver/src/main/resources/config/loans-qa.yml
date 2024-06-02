@@ -1,7 +1,7 @@
 
 build:
   version: "2.0"
-accounts:
+loans:
   message: "Welcome to Banking Loans application for QA"
   contactDetails:
     name: "Sunita Reddy(QA Lead)"
