@@ -2,12 +2,29 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    #active: native
+    active: git
   cloud:
     config:
       server:
-        native:
-          search-locations: "classpath:/config"
+        #native:
+          #search-locations: "classpath:/config" In config-server stored configuration
+          #search-locations: "file:///Users//satishkumarsubudhi//MicroserviceProject//Config" In local system stored configuration
+        git:
+          uri: "https://github.com/Satish522/config-repository.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+
+encrypt:
+  key: "SJDFHSIDF4NSBD3432KAS"
 
 server:
   port: 8071
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
