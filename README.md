@@ -8,6 +8,13 @@ Push to docker registry
 =======================
 docker image push docker.io/satish2121/accounts:banking
 
+Config-Server
+-------------
+We can the help of any secret key we can keep encrypted data in git config-repo
+encrypt:
+  key: "SJDFHSIDF4NSBD3432KAS"
+![image](https://github.com/Satish522/BankingApplication/assets/9487171/46c48d00-2a48-48c7-825c-b38d222a0cf8)
+
 
 RabbitMQ (Docker Image)
 ========================
