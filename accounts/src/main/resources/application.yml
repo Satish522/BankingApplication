@@ -1,6 +1,8 @@
 server:
   port: 8080
 spring:
+  application:
+    name: "accounts"
   datasource:
     url: jdbc:postgresql://localhost:5435/accounts
     driverClassName: org.postgresql.Driver
@@ -16,14 +18,5 @@ spring:
       mode: always
   profiles:
     active: "prod"
-
-build:
-  version: "3.0"
-accounts:
-  message: "Welcome to Banking accounts application"
-  contactDetails:
-    name: "Satish Subudhi"
-    email: "satishsubudhi522@gmail.com"
-  callSupport:
-    - (+91)7873482121
-    - (+91)7008378517
+  config:
+    import: "configserver:http://localhost:8071/"

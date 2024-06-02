@@ -1,0 +1,10 @@
+build:
+  version: "3.0"
+accounts:
+  message: "Welcome to Banking accounts application"
+  contactDetails:
+    name: "Satish Subudhi"
+    email: "satishsubudhi522@gmail.com"
+  callSupport:
+    - (+91)7873482121
+    - (+91)7008378517
