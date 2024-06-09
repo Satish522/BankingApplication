@@ -16,10 +16,10 @@ spring:
   sql:
     init:
       mode: always
-  profiles:
-    active: "qa"
-  config:
-    import: "configserver:http://localhost:8071/"
+  #profiles:
+  #  active: "qa"
+  #config:
+  #  import: "configserver:http://localhost:8071/"
   rabbitmq:
     host: "localhost"
     port: "5672"
