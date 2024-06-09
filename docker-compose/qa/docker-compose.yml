@@ -2,7 +2,6 @@ services:
   postgres-accounts:
     container_name: postgres-accounts
     image: postgres
-    hostname: postgres
     environment:
       POSTGRES_DB: accounts
       POSTGRES_USER: postgres
