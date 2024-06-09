@@ -8,9 +8,9 @@ CREATE TABLE IF NOT EXISTS public.cards
     amount_used integer NOT NULL,
     available_amount integer NOT NULL,
     created_at date NOT NULL,
-    created_by varchar(20) NOT NULL,
+    created_by varchar(200) NOT NULL,
     update_at date ,
-    update_by varchar(20) ,
+    update_by varchar(200) ,
     CONSTRAINT cards_pkey PRIMARY KEY (card_id)
 )
 
