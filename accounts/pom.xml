@@ -114,7 +114,6 @@
 					</from>
 					<to>
 						<image>satish2121/${project.artifactId}:banking</image>
-						<credHelper>docker-hub</credHelper>
 					</to>
 				</configuration>
 			</plugin>
