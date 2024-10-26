@@ -17,6 +17,6 @@ services:
       SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
       SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres-accounts:5432/accounts"
       SPRING_RABBITMQ_HOST: "rabbitmq"
-      EUREKA_CLIENT_SERIVCEURL_DEFAULTZONE: "http://discoveryserver:8070/eureka/"
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://discoveryserver:8070/eureka/"
 
 
