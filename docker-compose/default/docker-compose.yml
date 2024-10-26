@@ -71,7 +71,7 @@ services:
         condition: service_healthy
     extends:
       file: ./common-config.yml
-      service: "microservice-base-config"
+      service: "microservice-configserver-config"
     environment:
       SPRING_APPLICATION_NAME: "discoveryserver"
 
