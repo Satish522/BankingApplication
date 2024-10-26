@@ -88,7 +88,7 @@ services:
       configserver:
         condition: service_healthy
       discoveryserver:
-        conidtion: service_healthy
+        condition: service_healthy
     extends:
       file: ./common-config.yml
       service: microservice-configserver-config
@@ -106,7 +106,7 @@ services:
       configserver:
         condition: service_healthy
       discoveryserver:
-        conidtion: service_healthy
+        condition: service_healthy
     extends:
       file: ./common-config.yml
       service: microservice-configserver-config
@@ -124,7 +124,7 @@ services:
       configserver:
         condition: service_healthy
       discoveryserver:
-        conidtion: service_healthy
+        condition: service_healthy
     extends:
       file: ./common-config.yml
       service: microservice-configserver-config
