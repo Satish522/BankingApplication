@@ -55,6 +55,25 @@ services:
       file: ./common-config.yml
       service: "microservice-base-config"
 
+  discoveryserver:
+    image: "satish2121/discoveryserver:banking"
+    container_name: discoveryserver-ms
+    ports:
+      - "8070:8070"
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      timeout: 5s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+    depends_on:
+      configserver:
+        condition: service_healthy
+    extends:
+      file: ./common-config.yml
+      service: "microservice-base-config"
+    environment:
+      SPRING_APPLICATION_NAME: "discoveryserver"
 
   accounts:
     image: "satish2121/accounts:banking"
@@ -68,6 +87,8 @@ services:
         condition: service_healthy
       configserver:
         condition: service_healthy
+      discoveryserver:
+        conidtion: service_healthy
     extends:
       file: ./common-config.yml
       service: microservice-configserver-config
@@ -84,6 +105,8 @@ services:
         condition: service_healthy
       configserver:
         condition: service_healthy
+      discoveryserver:
+        conidtion: service_healthy
     extends:
       file: ./common-config.yml
       service: microservice-configserver-config
@@ -100,6 +123,8 @@ services:
         condition: service_healthy
       configserver:
         condition: service_healthy
+      discoveryserver:
+        conidtion: service_healthy
     extends:
       file: ./common-config.yml
       service: microservice-configserver-config

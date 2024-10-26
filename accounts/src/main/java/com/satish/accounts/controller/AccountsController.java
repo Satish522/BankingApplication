@@ -1,10 +1,7 @@
 package com.satish.accounts.controller;
 
 import com.satish.accounts.constants.AccountConstants;
-import com.satish.accounts.dto.ContactDetailRecord;
-import com.satish.accounts.dto.CustomerDto;
-import com.satish.accounts.dto.ErrorResponseDto;
-import com.satish.accounts.dto.ResponseDto;
+import com.satish.accounts.dto.*;
 import com.satish.accounts.service.IAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
