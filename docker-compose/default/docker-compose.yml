@@ -74,12 +74,14 @@ services:
       service: "microservice-configserver-config"
     environment:
       SPRING_APPLICATION_NAME: "discoveryserver"
+      #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
 
   accounts:
     image: "satish2121/accounts:banking"
     container_name: accounts-ms
     environment:
       SPRING_APPLICATION_NAME: "accounts"
+      #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "8080:8080"
     depends_on:
@@ -98,6 +100,7 @@ services:
     container_name: loans-ms
     environment:
       SPRING_APPLICATION_NAME: "loans"
+      #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "8090:8090"
     depends_on:
@@ -116,6 +119,7 @@ services:
     container_name: cards-ms
     environment:
       SPRING_APPLICATION_NAME: "cards"
+      #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "9000:9000"
     depends_on:
