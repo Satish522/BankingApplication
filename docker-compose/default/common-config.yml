@@ -19,4 +19,13 @@ services:
       SPRING_RABBITMQ_HOST: "rabbitmq"
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://discoveryserver:8070/eureka/"
 
+  microservice-eureka-config:
+    extends:
+      service: microservice-configserver-config
+    depends_on:
+      discoveryserver:
+        condition: service_healthy
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discoveryserver:8070/eureka/
+
 
