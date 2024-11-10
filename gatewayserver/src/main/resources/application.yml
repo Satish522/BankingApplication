@@ -9,7 +9,7 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
+          enabled: false
           lowerCaseServiceId: true
 
 info:
@@ -29,3 +29,9 @@ management:
   info:
     env:
       enabled: true
+
+logging:
+  level:
+    com:
+      satish:
+        gatewayserver: DEBUG

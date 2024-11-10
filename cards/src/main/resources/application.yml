@@ -18,8 +18,8 @@ spring:
       mode: always
   #profiles:
   #  active: "qa"
-  #config:
-  #  import: "configserver:http://localhost:8071/"
+  config:
+    import: "configserver:http://localhost:8071/"
   rabbitmq:
     host: "localhost"
     port: "5672"
@@ -46,10 +46,18 @@ management:
     web:
       exposure:
         include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   #Enable shutdown related properties in actuator
   endpoint:
     shutdown:
       enabled: true
+    health:
+      probes:
+        enabled: true
   info:
     env:
       enabled: true
@@ -58,3 +66,9 @@ management:
 endpoints:
   shutdown:
     enabled: true
+
+logging:
+  level:
+    com:
+      satish:
+        cards: DEBUG

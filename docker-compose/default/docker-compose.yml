@@ -84,6 +84,12 @@ services:
       #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "8080:8080"
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
+      timeout: 5s
+      retries: 10
+      interval: 10s
+      start_period: 10s
     depends_on:
       postgres-accounts:
         condition: service_healthy
@@ -103,6 +109,12 @@ services:
       #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "8090:8090"
+    healthcheck:
+      test: "curl --fail --silent localhost:8090/actuator/health/readiness | grep UP || exit 1"
+      timeout: 5s
+      retries: 10
+      interval: 10s
+      start_period: 10s
     depends_on:
       postgres-accounts:
         condition: service_healthy
@@ -122,6 +134,12 @@ services:
       #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "9000:9000"
+    healthcheck:
+      test: "curl --fail --silent localhost:9000/actuator/health/readiness | grep UP || exit 1"
+      timeout: 5s
+      retries: 10
+      interval: 10s
+      start_period: 10s
     depends_on:
       postgres-accounts:
         condition: service_healthy
@@ -132,6 +150,25 @@ services:
     extends:
       file: ./common-config.yml
       service: microservice-configserver-config
+
+  gatewayserver:
+    image: "satish2121/gatewayserver:banking"
+    container_name: gatewayserver-ms
+    environment:
+      SPRING_APPLICATION_NAME: "gatewayserver"
+      #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
+    ports:
+      - "8072:8072"
+    depends_on:
+      accounts:
+        condition: service_healthy
+      loans:
+        condition: service_healthy
+      cards:
+        condition: service_healthy
+    extends:
+      file: ./common-config.yml
+      service: microservice-eureka-config
 
 networks:
   satish:
