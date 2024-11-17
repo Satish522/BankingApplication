@@ -111,12 +111,6 @@
 				<artifactId>jib-maven-plugin</artifactId>
 				<version>3.4.1</version>
 				<configuration>
-					<container>
-						<jvmFlags>
-							<!-- Explicitly set active profile for Spring -->
-							<jvmFlag>-Dspring.profiles.active=dev</jvmFlag>
-						</jvmFlags>
-					</container>
 					<from>
 						<image>eclipse-temurin:21-jre</image>
 					</from>
