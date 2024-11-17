@@ -2,4 +2,4 @@ spring:
   application:
     name: "discoveryserver"
   config:
-    import: configserver:http://configserver:8071/
+    import: "configserver:http://configserver:8071/"
