@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author satishkumarsubudhi
  * @since 26/10/24
  */
-@FeignClient("cards")
+@FeignClient(value = "cards" , fallback = CardsFallback.class)
 public interface CardsFeignClient {
 
     @GetMapping(value = "/api/fetch", consumes = "application/json")

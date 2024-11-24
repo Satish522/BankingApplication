@@ -28,6 +28,10 @@ spring:
     username: "guest"
   lifecycle:
     timeout-per-shutdown-phase: 30s
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 
 eureka:
   instance:
@@ -75,3 +79,11 @@ logging:
     com:
       satish:
         accounts: DEBUG
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
