@@ -249,6 +249,8 @@ public class LoansController {
     })
     @GetMapping("/contact-info")
     public ResponseEntity<ContactDetailRecord> getContactDetails() {
+        logger.debug("Invoked Loans Contact Info API");
+       /* throw new RuntimeException(); just for demo retry pattern */
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(contactDetails);
