@@ -35,3 +35,17 @@ logging:
     com:
       satish:
         gatewayserver: DEBUG
+
+resilience4j.circuitbreaker:
+  instances:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+    accountsCircuitBreaker:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+
