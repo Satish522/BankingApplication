@@ -44,3 +44,9 @@ UI has changed Navigate to **Developers -> Hookdeck Console**
 Redis server for Rate Limiter patter
 -------------------------------------
 docker run -p 6379:6379 --name banking -d redis
+
+
+Observability & Monitoring
+---------------------------
+Grafana Loki - https://grafana.com/docs/loki/latest/get-started/quick-start/
+
