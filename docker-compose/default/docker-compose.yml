@@ -274,12 +274,14 @@ services:
   tempo:
     image: grafana/tempo:latest
     container_name: tempo
+    command: [ "-config.file=/etc/tempo.yaml" ]
     ports:
       - "14268:14268" # OpenTelemetry Jaeger gRPC
       - "14250:14250" # OpenTelemetry Collector gRPC
       - "3200:3200"   # Tempo HTTP API
+      -
     volumes:
-      - ../observability/tempo/tempo-data:/tmp/tempo
+      - ../observability/tempo/tempo.yml:/etc/tempo-config.yml
     extends:
       file: ./common-config.yml
       service: network-deploy-service
