@@ -54,6 +54,8 @@ services:
     extends:
       file: ./common-config.yml
       service: "microservice-base-config"
+    environment:
+      OTEL_SERVICE_NAME: "configserver"
 
   discoveryserver:
     image: "satish2121/discoveryserver:banking"
@@ -74,6 +76,7 @@ services:
       service: "microservice-configserver-config"
     environment:
       SPRING_APPLICATION_NAME: "discoveryserver"
+      OTEL_SERVICE_NAME: "discoveryserver"
       #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
 
   accounts:
@@ -81,6 +84,7 @@ services:
     container_name: accounts-ms
     environment:
       SPRING_APPLICATION_NAME: "accounts"
+      OTEL_SERVICE_NAME: "accounts"
       #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "8080:8080"
@@ -106,6 +110,7 @@ services:
     container_name: loans-ms
     environment:
       SPRING_APPLICATION_NAME: "loans"
+      OTEL_SERVICE_NAME: "loans"
       #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "8090:8090"
@@ -131,6 +136,7 @@ services:
     container_name: cards-ms
     environment:
       SPRING_APPLICATION_NAME: "cards"
+      OTEL_SERVICE_NAME: "cards"
       #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "9000:9000"
@@ -156,6 +162,7 @@ services:
     container_name: gatewayserver-ms
     environment:
       SPRING_APPLICATION_NAME: "gatewayserver"
+      OTEL_SERVICE_NAME: "gatewayserver"
       #SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
     ports:
       - "8072:8072"
@@ -260,6 +267,19 @@ services:
       - "9090:9090" # Prometheus UI accessible at http://localhost:9090
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
+    extends:
+      file: ./common-config.yml
+      service: network-deploy-service
+
+  tempo:
+    image: grafana/tempo:latest
+    container_name: tempo
+    ports:
+      - "14268:14268" # OpenTelemetry Jaeger gRPC
+      - "14250:14250" # OpenTelemetry Collector gRPC
+      - "3200:3200"   # Tempo HTTP API
+    volumes:
+      - ../observability/tempo/tempo-data:/tmp/tempo
     extends:
       file: ./common-config.yml
       service: network-deploy-service

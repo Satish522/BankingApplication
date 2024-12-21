@@ -103,8 +103,9 @@ public class LoansController {
     public ResponseEntity<LoansDto> fetchLoanDetails(@RequestHeader("banking-correlation-id") String correlationdId, @RequestParam
                                                                @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
                                                                String mobileNumber) {
-        logger.debug("Banking service correlation id : {}", correlationdId);
+        logger.debug("Fetch Loans Details method start");
         LoansDto loansDto = iLoansService.fetchLoan(mobileNumber);
+        logger.debug("Fetch Loans Details method end");
         return ResponseEntity.status(HttpStatus.OK).body(loansDto);
     }
 
