@@ -274,7 +274,7 @@ services:
   tempo:
     image: grafana/tempo:latest
     container_name: tempo
-    command: [ "-config.file=/etc/tempo-config.yaml" ]
+    command: [ "-config.file=/etc/tempo-config.yml" ]
     ports:
       - "14268:14268" # OpenTelemetry Jaeger gRPC
       - "14250:14250" # OpenTelemetry Collector gRPC
