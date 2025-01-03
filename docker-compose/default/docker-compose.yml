@@ -33,6 +33,8 @@ services:
       retries: 10
       interval: 10s
       start_period: 5s
+    volumes:
+      - ./data/.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
     extends:
       file: ./common-config.yml
       service: network-deploy-service
