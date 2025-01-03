@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Schema(
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 )
 @Data
 @AllArgsConstructor
-public class ErrorResponseDto {
+public class ErrorResponseDto implements Serializable {
 
     @Schema(
             description = "API Path invoked bu client", example = "uri=/api/v1/account"
