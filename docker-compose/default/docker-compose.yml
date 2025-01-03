@@ -90,9 +90,9 @@ services:
       - "8080:8080"
     healthcheck:
       test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
-      timeout: 5s
-      retries: 10
-      interval: 10s
+      timeout: 10s
+      retries: 20
+      interval: 20s
       start_period: 10s
     depends_on:
       postgres-accounts:
@@ -116,9 +116,9 @@ services:
       - "8090:8090"
     healthcheck:
       test: "curl --fail --silent localhost:8090/actuator/health/readiness | grep UP || exit 1"
-      timeout: 5s
-      retries: 10
-      interval: 10s
+      timeout: 10s
+      retries: 20
+      interval: 20s
       start_period: 10s
     depends_on:
       postgres-accounts:
@@ -142,9 +142,9 @@ services:
       - "9000:9000"
     healthcheck:
       test: "curl --fail --silent localhost:9000/actuator/health/readiness | grep UP || exit 1"
-      timeout: 5s
-      retries: 10
-      interval: 10s
+      timeout: 10s
+      retries: 20
+      interval: 20s
       start_period: 10s
     depends_on:
       postgres-accounts:
@@ -271,18 +271,20 @@ services:
       file: ./common-config.yml
       service: network-deploy-service
 
-  tempo:
-    image: grafana/tempo:2.4.2
-    container_name: tempo
-    command: -config.file /etc/tempo-config.yaml
-    ports:
-      - "3110:3100"
-      - "4317:4317"
-    volumes:
-      - ../observability/tempo/tempo.yml:/etc/tempo-config.yaml
-    extends:
-      file: common-config.yml
-      service: network-deploy-service
+#  tempo:
+#    image: grafana/tempo:latest
+#    container_name: tempo
+#    command: -config.file /etc/tempo-config.yaml
+#    ports:
+#      - "4317:4317" # OTLP gRPC
+#      - "4318:4318" # OTLP HTTP
+#      - "14268:14268" # Jaeger HTTP
+#      - "3200:3200" # Query frontend
+#    volumes:
+#      - ../observability/tempo/tempo.yml:/etc/tempo-config.yaml
+#    extends:
+#      file: common-config.yml
+#      service: network-deploy-service
 
   grafana:
     image: grafana/grafana:latest
