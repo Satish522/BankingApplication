@@ -33,6 +33,8 @@ public class FilterUtility {
     }
 
     private ServerWebExchange setRequestHeader(ServerWebExchange exchange, String name, String value) {
-        return exchange.mutate().request(exchange.getRequest().mutate().header(name,value).build()).build();
+        exchange.getResponse().getHeaders().add(name, value);
+        return exchange;
+        //return exchange.mutate().request(exchange.getRequest().mutate().header(name,value).build()).build();
     }
 }
