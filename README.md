@@ -50,3 +50,7 @@ Observability & Monitoring
 ---------------------------
 Grafana Loki - https://grafana.com/docs/loki/latest/get-started/quick-start/
 
+Keycloak
+-------------------------
+docker run --env=KEYCLOAK_ADMIN=admin --env=KEYCLOAK_ADMIN_PASSWORD=admin --network=bridge -p 7080:8080 -d quay.io/keycloak/keycloak
+
