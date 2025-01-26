@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS public.accounts
     customer_id integer NOT NULL,
     account_type varchar(100) NOT NULL,
     branch_address varchar(200) NOT NULL,
+    communication_sw boolean,
     created_at date NOT NULL,
     created_by varchar(200) NOT NULL,
     update_at date ,
