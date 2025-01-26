@@ -129,8 +129,8 @@ services:
     depends_on:
       postgres-accounts:
         condition: service_healthy
-      rabbit:
-        condition: service_healthy
+      #rabbit:
+      #  condition: service_healthy
       configserver:
         condition: service_healthy
       discoveryserver:
@@ -193,9 +193,9 @@ services:
     environment:
       #SPRING_RABBITMQ_HOST: "rabbit"
       SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: "kafka:9092"
-    depends_on:
-      rabbit:
-        condition: service_healthy
+    #depends_on:
+    #  rabbit:
+    #    condition: service_healthy
     extends:
       file: common-config.yml
       service: network-deploy-service
