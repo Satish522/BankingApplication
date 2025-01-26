@@ -1,6 +1,7 @@
 package com.satish.accounts.service.impl;
 
 import com.satish.accounts.constants.AccountConstants;
+import com.satish.accounts.dto.AccountMsgSto;
 import com.satish.accounts.dto.AccountsDto;
 import com.satish.accounts.dto.CustomerDto;
 import com.satish.accounts.entity.Accounts;
@@ -13,6 +14,9 @@ import com.satish.accounts.repository.AccountsRepository;
 import com.satish.accounts.repository.CustomerRepository;
 import com.satish.accounts.service.IAccountService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,9 +27,12 @@ import java.util.Random;
 @AllArgsConstructor
 public class AccountServiceImpl implements IAccountService {
 
+    private static final Logger log = LoggerFactory.getLogger(AccountServiceImpl.class);
     private AccountsRepository accountsRepository;
 
     private CustomerRepository customerRepository;
+
+    private final StreamBridge streamBridge;
 
     /**
      * @param customerDto - Customer Object
@@ -38,8 +45,13 @@ public class AccountServiceImpl implements IAccountService {
         }
         Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
         Customer savedCustomer = customerRepository.save(customer);
-        accountsRepository.save(createNewAccount(savedCustomer));
+
+        Accounts savedAccounts =  accountsRepository.save(createNewAccount(savedCustomer));
+
+        sendCommunication(savedAccounts, savedCustomer);
     }
+
+
 
     /**
      * @param mobileNumber
@@ -85,6 +97,19 @@ public class AccountServiceImpl implements IAccountService {
         return true;
     }
 
+    @Override
+    public boolean updateCommunicatonStatus(Long accountNumber) {
+        if(accountNumber != null) {
+            Accounts accounts = accountsRepository.findById(accountNumber).orElseThrow(
+                    ()-> new ResourceNotFoundException("Account", "AccoutNumber", accountNumber.toString())
+            );
+            accounts.setCommunicationSw(true);
+            accountsRepository.save(accounts);
+            return true;
+        }
+        return false;
+    }
+
     /**
      * @param customer
      * @return
@@ -100,4 +125,12 @@ public class AccountServiceImpl implements IAccountService {
 
         return newAccount;
     }
+
+    private void sendCommunication(Accounts accounts, Customer customer) {
+        var accountsMsgDto = new AccountMsgSto(accounts.getAccountNumber(), customer.getName(), customer.getEmail(), customer.getMobileNumber());
+        log.info("Sending communication for the details: {}", accountsMsgDto);
+        var result = streamBridge.send("sendCommunication-out-0", accountsMsgDto);
+        log.info("Is the communication request successfully  processed?: {}", result);
+    }
+
 }

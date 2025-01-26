@@ -15,4 +15,6 @@ public interface IAccountService {
     boolean updateAccount(CustomerDto customerDto);
 
     boolean deleteAccount(String mobileNumber);
+
+    boolean updateCommunicatonStatus(Long accountNumber);
 }
