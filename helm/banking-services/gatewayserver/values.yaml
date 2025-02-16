@@ -1,0 +1,26 @@
+deploymentName: gatewayserver-deployment
+serviceName: gatewayserver-deployment
+appLabel: gatewayserver
+appName: gatewayserver
+
+replicaCount: 1
+
+image:
+  repository: satish2121/gatewayserver
+  tag: banking
+
+containerPort: 8072
+
+service:
+  type: LoadBalancer
+  port: 8072
+  targetPort: 8072
+
+appname_enabled: true
+profile_enabled: true
+config_enabled: true
+eureka_enabled: true
+authserver_enabled: true
+otel_enabled: true
+kafka_enabled: false
+
