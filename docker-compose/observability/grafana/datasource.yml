@@ -20,7 +20,7 @@ datasources:
   - name: Tempo
     type: tempo
     uid: tempo
-    url: http://tempo:4318
+    url: http://tempo:3100
     access: proxy
     orgId: 1
     basicAuth: false
